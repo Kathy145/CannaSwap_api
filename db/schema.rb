@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20180222170639) do
 
-  create_table "posts", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "posts", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180222170639) do
     t.integer "rating"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
