@@ -47,3 +47,6 @@ gem "bcrypt", "~> 3.1.11"
 gem "will_paginate"
 
 gem 'pg'
+
+gem 'thin'
+
