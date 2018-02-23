@@ -45,3 +45,5 @@ gem "active_model_serializers", "~> 0.10.0"
 gem "bcrypt", "~> 3.1.11"
 
 gem "will_paginate"
+
+gem 'pg'

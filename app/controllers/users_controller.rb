@@ -50,4 +50,3 @@ class UsersController < ApplicationController
     ActiveModelSerializers::Deserialization.jsonapi_parse(params)
   end
 end
-end

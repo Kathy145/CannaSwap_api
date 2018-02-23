@@ -47,17 +47,27 @@ class PostsController < ApplicationController
   end
 
   private
-  def set_post
-    begin
-      @post = Post.find params[:id]
-    rescue ActiveRecord::RecordNotFound
-      post = Post.new
-      post.errors.add(:id, "Wrong ID provided")
-      render_error(post, 404) and return
+    def set_post
+      begin
+        @post = Post.find params[:id]
+      rescue ActiveRecord::RecordNotFound
+        post = Post.new
+        post.errors.add(:id, "Wrong ID provided")
+        render_error(post, 404) and return
+      end
     end
-  end
 
-  def post_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params)
-  end
+    def post_params
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+    end
+
+    def pagination_meta(object)
+      {
+        current_page: object.current_page,
+        next_page: object.next_page,
+        prev_page: object.previous_page,
+        total_pages: object.total_pages,
+        total_count: object.total_entries
+      }
+    end
 end
